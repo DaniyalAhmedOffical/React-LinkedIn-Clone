@@ -29,8 +29,10 @@ function Login() {
     if (!password) {
       return alert("Password is Required. ");
     }
+    console.log(email);
+    console.log(password);
     auth
-      .createUserWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(email.trim(), password)
       .then((userAuth) => {
         userAuth.user
           .updateProfile({
@@ -57,6 +59,8 @@ function Login() {
 
   const signIn = (e) => {
     e.preventDefault();
+    console.log(email);
+    console.log(password);
     if (!email) {
       return alert("Email is Required. ");
     }
@@ -64,10 +68,8 @@ function Login() {
     if (!password) {
       return alert("Password is Required. ");
     }
-  };
-
-  auth
-    .signInWithEmailAndPassword(email, password)
+    auth
+    .signInWithEmailAndPassword(email.trim(), password)
     .then(({ user }) => {
       dispatch(
         loginuser({
@@ -79,6 +81,7 @@ function Login() {
       );
     })
     .catch(error => alert(error));
+  };
 
   return (
     <>
@@ -86,7 +89,7 @@ function Login() {
         <img
           src="https://www.freeiconspng.com/thumbs/linkedin-logo-png/linkedin-9.png"
           alt=""
-          srcset=""
+          srcSet=""
         />
         {signup === true ? (
           <form onSubmit={register}>
@@ -94,23 +97,27 @@ function Login() {
               type="text"
               placeholder="Full Name"
               value={name}
+              name="name" 
               onChange={(e) => setName(e.target.value)}
             />
             <input
               type="text"
               placeholder="Profile Picture URL"
               value={photoURL}
+              name="photoURL" 
               onChange={(e) => setPhotoURL(e.target.value)}
             />
             <input
               type="email"
               placeholder="Email"
+              name="email" 
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <input
               type="password"
               placeholder="Password"
+              name="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -126,12 +133,14 @@ function Login() {
             <input
               type="email"
               placeholder="Email"
+              name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <input
               type="password"
               placeholder="Password"
+              name="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
