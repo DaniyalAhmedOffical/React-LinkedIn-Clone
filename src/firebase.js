@@ -17,6 +17,10 @@ const firebaseConfig = {
 
   // we want to use firebase authentication
   const auth = firebase.auth();
-
-
+    
   export { db, auth }
+
+
+  
+  // firebas par host kiya tha us ka link ha ye save yaha kiya ha 
+    // Hosting URL: https://linkedin-clone-b5101.web.app
